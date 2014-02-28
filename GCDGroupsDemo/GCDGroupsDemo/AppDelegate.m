@@ -17,9 +17,9 @@
 {
 //  [self dispatchGroupAsyncMethod];
   
-//  [self serialQueueAndCustomCounterMethod];
+  [self serialQueueOrCustomCounterMethod];
   
-  [self dispatchGroupEnterLeaveMethod];
+//  [self dispatchGroupEnterLeaveMethod];
 
   return YES;
 }
@@ -61,7 +61,7 @@
 
 
 // Working but not clean solution using custom counter which needs to be synchronized (or serial queue must be used)
-- (void)serialQueueAndCustomCounterMethod
+- (void)serialQueueOrCustomCounterMethod
 {
   dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
   __block NSUInteger inProgress = TASKS_COUNT;

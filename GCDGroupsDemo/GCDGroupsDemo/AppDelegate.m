@@ -71,12 +71,13 @@
     dispatch_async(queue, ^{
       [weakSelf taskWithNumber:i andCompletionBlock:^{
         NSLog(@"End of task %lu", (unsigned long)i);
+        NSUInteger localInProgress;
         
         @synchronized(weakSelf) {
-          --inProgress;
+          localInProgress = --inProgress;
         }
         
-        if (inProgress == 0) {
+        if (localInProgress == 0) {
           NSLog(@"All tasks done");
         }
       }];
